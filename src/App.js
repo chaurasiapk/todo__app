@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { InputTask } from "./task/inputTask/inputTask";
+import { DisplayTask } from "./task/displayTask/displayTask";
+import "./App.css";
 
-function App() {
+import Modal from "react-modal";
+
+
+
+const App = () => {
+  const [taskList, setTaskList] = useState([]);
+
+ 
+
+  Modal.setAppElement('#root');
+
+
+  useEffect(()=>{
+
+      const localList = JSON.parse(window.localStorage.getItem("tasks"));
+      // console.log(localList);
+      setTaskList(localList);
+      
+   },[]);
+
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+
+      <div className="app">
+      <InputTask taskList={taskList} setTaskList={setTaskList} />
+      <DisplayTask  taskList={taskList} setTaskList={setTaskList} />
+       
+      </div>
+      
+       
+      
     </div>
   );
-}
+};
 
 export default App;
