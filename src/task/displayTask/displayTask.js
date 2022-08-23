@@ -46,44 +46,40 @@ export const DisplayTask = ({ taskList, setTaskList }) => {
         <tbody>
           {taskList.map((task, index) => {
             return (
-             
-                <tr key={index} className="display-item">
-                  <td className="serial-number">{index + 1}:</td>
+              <tr key={index} className="display-item">
+                <td className="serial-number">{index + 1}:</td>
 
-                  <td
-                    className={`task-name ${task.checked ? "task-done" : ""}`}
-                  >
-                    {task.value1}
-                  </td>
+                <td className={`task-name ${task.checked ? "task-done" : ""}`}>
+                  {task.value1}
+                </td>
 
-                  <td className="icons">
-                    <i
-                      className="ri-eye-line take-a-look"
-                      onClick={() => modalHandler(task)}
-                    ></i>
-                    {!task.checked ? (
-                      <span
-                        onClick={() => checkHandler(index)}
-                        className="material-symbols-outlined check"
-                      >
-                        done_all
-                      </span>
-                    ) : (
-                      <span
-                        onClick={() => checkHandler(index)}
-                        className="material-symbols-outlined check"
-                      >
-                        remove_done
-                      </span>
-                    )}
+                <td className="icons">
+                  <i
+                    className="ri-eye-line take-a-look"
+                    onClick={() => modalHandler(task)}
+                  ></i>
+                  {!task.checked ? (
+                    <span
+                      onClick={() => checkHandler(index)}
+                      className="material-symbols-outlined check"
+                    >
+                      done_all
+                    </span>
+                  ) : (
+                    <span
+                      onClick={() => checkHandler(index)}
+                      className="material-symbols-outlined check"
+                    >
+                      remove_done
+                    </span>
+                  )}
 
-                    <i
-                      onClick={() => deleteHandler(index)}
-                      className="ri-delete-bin-line bin"
-                    />
-                  </td>
-                </tr>
-             
+                  <i
+                    onClick={() => deleteHandler(index)}
+                    className="ri-delete-bin-line bin"
+                  />
+                </td>
+              </tr>
             );
           })}
         </tbody>

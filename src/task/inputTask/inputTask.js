@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "remixicon/fonts/remixicon.css";
 import "./inputTask.css";
 
-export const InputTask = (props) => {
+export const InputTask = ({ taskList, setTaskList }) => {
   const [value, setValue] = useState("");
 
   const clickHandler = (event) => {
@@ -15,10 +15,10 @@ export const InputTask = (props) => {
 
     if (inputs.value1.length === 0) {
       alert("Input field can not be empty..... !");
-    } else if (inputs.value1.length !== 0) {
-      const newList = [inputs, ...props.taskList];
+    } else {
+      const newList = [inputs, ...taskList];
       window.localStorage.setItem("tasks", JSON.stringify(newList));
-      props.setTaskList(newList);
+      setTaskList(newList);
     }
 
     setValue("");
